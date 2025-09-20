@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON/BIN Image Downloader</title>
+  <style>
+    /* Dán nguyên phần CSS trong script vào đây */
+  </style>
+</head>
+<body>
+  <!-- Giao diện -->
+  <button id="gm-toggle-button">🖼️</button>
+  <div id="gm-main-panel">
+      <div class="gm-header">
+          <span>✨ Tải ảnh từ JSON/BIN</span>
+          <button class="gm-close-btn">&times;</button>
+      </div>
+      <div class="gm-content">
+          <label for="gmFileInput" id="gmFileInputLabel">📂 Chọn Files</label>
+          <input type="file" id="gmFileInput" multiple>
+          <div id="gm-status">Sẵn sàng nhận file...</div>
+      </div>
+  </div>
+
+  <script>
+    // Dán nguyên phần JS trong script vào đây
+    // Nhưng bỏ GM_download, thay bằng <a download>
+    function downloadFile(url, filename) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    // Trong chỗ forEach(images) đổi:
+    // GM_download({ url: img.url, name: filename });
+    // → downloadFile(img.url, filename);
+  </script>
+</body>
+</html>
